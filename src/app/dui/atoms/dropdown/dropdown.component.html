@@ -1,0 +1,79 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="field.DisplayType">
+    <!-- <div *ngIf="field.Options?.length>0"> -->
+    <div>
+      <kendo-dropdownlist
+        class="form-control dynamicui-dropdown dynamicui-font"
+        *ngSwitchCase="DisplayType.DropDownList"
+        [data]="field.Options"
+        [textField]="field.DataTextField"
+        [formControlName]="field.Name"
+        [valueField]="field.DataValueField"
+        [title]="field.Label | htmltextcontent"
+        [filterable]="field.Filterable"
+        [valuePrimitive]="field.IsPrimitive"
+        [defaultItem]="field.defaultItem"
+        [disabled]="field.IsDisabled"
+        (filterChange)="handleFilter($event, field)"
+        (valueChange)="handleDropdownChange($event, field)"
+      >
+      </kendo-dropdownlist>
+    </div>
+    <div>
+      <kendo-autocomplete
+        [formControlName]="field.Name"
+        class="form-control dynamicui-dropdown dynamicui-font"
+        *ngSwitchCase="DisplayType.AutoComplete"
+        [data]="field.Options"
+        [valueField]="field.DataTextField"
+        [title]="field.Label | htmltextcontent"
+        [disabled]="field.IsDisabled"
+        (valueChange)="handleAutoCompleteChange($event, field)"
+      >
+      </kendo-autocomplete>
+    </div>
+    <div>
+      <kendo-combobox
+        class="form-control dynamicui-dropdown dynamicui-font"
+        *ngSwitchCase="DisplayType.ComboBox"
+        [data]="field.Options"
+        [textField]="field.DataTextField"
+        [valueField]="field.DataValueField"
+        [title]="field.Label | htmltextcontent"
+        [placeholder]="field.placeholder"
+        [formControlName]="field.Name"
+        allowCustom="false"
+        [disabled]="field.IsDisabled"
+        [valuePrimitive]="field.IsPrimitive"
+        (valueChange)="handleComboBoxChange($event, field)"
+      >
+      </kendo-combobox>
+    </div>
+    <div *ngSwitchCase="DisplayType.RadioButton">
+      <div
+        class="form-check dynamicui-radiobutton"
+        *ngFor="let opt of field.Options"
+      >
+        <input
+          [formControlName]="field.Name"
+          class="form-check-input dynamicui-radioinput"
+          type="radio"
+          [name]="field.Name"
+          [value]="opt.Key"
+        />
+        <label class="form-check-label dynamicui-radiolabel">
+          {{ opt.Value }}
+        </label>
+      </div>
+    </div>
+    <div *ngSwitchCase="DisplayType.Label">
+      <label
+        class="form-control-label dynamicui-label"
+        [attr.for]="field.value"
+        *ngIf="field.DisplayType == DisplayType.Label"
+        [innerHtml]="field.value | htmldecoder"
+      >
+      </label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div
+  class="textinput-group__errmsg_custom fadeInDown animated"
+  *ngIf="!isValid && !isDisabled && (isDirty || isTouched)"
+>
+  <div *ngIf="isRequired; else minLengthElem">
+    {{
+      !form.controls[field.Name].errors.message
+        ? 'Please provide a valid response to
+        continue.'
+        : form.controls[field.Name].errors.message
+    }}
+  </div>
+</div>
+<ng-template #minLengthElem>
+  <div *ngIf="isValidMinLength; else maxLengthElem">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> does not meet the
+    {{ errors.minlength.requiredLength }} character requirement.
+  </div>
+</ng-template>
+<ng-template #maxLengthElem>
+  <div *ngIf="isValidMaxLength; else patternElem">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> exceeds the
+    {{ errors.maxlength.requiredLength }} character limitation.
+  </div>
+</ng-template>
+<ng-template #patternElem>
+  <div *ngIf="isValidPattern; else maxValueElem">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> does not meet the
+    pattern requirement.
+  </div>
+</ng-template>
+<ng-template #maxValueElem>
+  <div *ngIf="isValidMaxValue; else minValueElem">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> exceeds
+    {{ errors.maxError.maxValue }} value limitation.
+  </div>
+</ng-template>
+<ng-template #minValueElem>
+  <div *ngIf="isValidMinValue; else emailElem">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> does not meet the
+    minimum {{ errors.minError.minValue }} value requirement.
+  </div>
+</ng-template>
+<ng-template #emailElem>
+  <div *ngIf="isValidEmail">
+    The response provided for
+    <span [innerHtml]="field.Label | htmldecoder"></span> does not meet the
+    email requirement..
+  </div>
+</ng-template>

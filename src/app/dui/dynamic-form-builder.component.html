@@ -1,0 +1,12 @@
+<div *ngFor="let element of nodeElements">
+  <div *ngIf="element.children.length > 0">
+    <field-generator
+      [attr.id]="getParentElementId(element)"
+      [field]="element.field"
+      [element]="element"
+      [form]="form"
+      [ngClass]="getParentClassName(element)"
+      [ngStyle]="getParentStyle(element)"
+    ></field-generator>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.dynamicui-tooltip * {
+  color: black;
+}
+
+.dynamicui-tooltip .k-callout {
+  color: black;
+}
+.dynamicui-tooltip .k-popup {
+  max-width: fit-content;
+}

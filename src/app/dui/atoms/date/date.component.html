@@ -1,0 +1,84 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="field.DisplayType">
+    <kendo-datepicker
+      class="dynamicui-datefont"
+      *ngSwitchCase="DisplayType.DatePicker"
+      [disabled]="field.isDisabled"
+      [min]="field.MinDate"
+      [formControlName]="field.Name"
+      [max]="field.MaxDate"
+      [format]="field.Format"
+      [navigation]="field.Navigation"
+      [title]="field.Label | htmltextcontent"
+      [(value)]="field.value"
+      placeholder="{{ field.placeholder }}"
+      [focusedDate]="field.focusedDate1"
+    >
+    </kendo-datepicker>
+
+    <kendo-dateinput
+      class="dynamicui-datefont"
+      *ngSwitchCase="DisplayType.DateInput"
+      [disabled]="field.isDisabled"
+      [spinners]="field.displayButton"
+      [formControlName]="field.Name"
+      [format]="field.Format"
+      [steps]="field.increamentby"
+      [min]="field.MinDate"
+      [title]="field.Label | htmltextcontent"
+      [max]="field.MaxDate"
+      [(value)]="field.value"
+      placeholder="{{ field.placeholder }}"
+    ></kendo-dateinput>
+
+    <kendo-datetimepicker
+      class="dynamicui-datefont"
+      *ngSwitchCase="DisplayType.DatetimePicker"
+      [format]="field.Format"
+      [min]="field.MinDate"
+      [format]="field.Format"
+      [max]="field.MaxDate"
+      [(value)]="field.value"
+      [formControlName]="field.Name"
+      [title]="field.Label | htmltextcontent"
+      placeholder="{{ field.placeholder }}"
+    >
+    </kendo-datetimepicker>
+
+    <kendo-daterange
+      *ngSwitchCase="DisplayType.DateRange"
+      [formControlName]="field.Name"
+      [title]="field.Label | htmltextcontent"
+    >
+      <label>
+        <span class="daterangelabel">{{ startDate }} </span>
+      </label>
+      <kendo-dateinput
+        class="dynamicui-datefont"
+        kendoDateRangeStartInput
+        [min]="field.MinDate"
+        [format]="field.Format"
+        [max]="field.MaxDate"
+        [(value)]="field.value.Start"
+      ></kendo-dateinput>
+      <label>
+        <span class="daterangelabel">{{ endDate }}</span>
+      </label>
+      <kendo-dateinput
+        class="dynamicui-datefont"
+        kendoDateRangeEndInput
+        [min]="field.MinDate"
+        [format]="field.Format"
+        [max]="field.MaxDate"
+        [(value)]="field.value.End"
+      ></kendo-dateinput>
+    </kendo-daterange>
+
+    <label
+      class="form-control-label dynamicui-datefont"
+      *ngSwitchCase="DisplayType.Label"
+      [innerHtml]="field.value | date: 'shortDate'"
+    >
+    </label>
+  </div>
+</div>

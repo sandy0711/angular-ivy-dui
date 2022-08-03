@@ -1,0 +1,41 @@
+<div [formGroup]="form">
+  <input
+    kendoTextBox
+    *ngIf="field.DisplayType == DisplayType.TextBox && field.Masking == null"
+    class="form-control dynamicui-textbox dynamicui-font"
+    [id]="field.Name"
+    [name]="field.Name"
+    [formControlName]="field.Name"
+    [title]="field.Label | htmltextcontent"
+    [class.is-invalid]="isDirty && !isValid"
+  />
+
+  <textarea
+    *ngIf="field.DisplayType == DisplayType.TextArea"
+    [class.is-invalid]="isDirty && !isValid"
+    [formControlName]="field.Name"
+    [id]="field.Name"
+    rows="9"
+    class="form-control dynamicui-font"
+    [title]="field.Label | htmltextcontent"
+    [placeholder]="field.placeholder"
+  ></textarea>
+
+  <kendo-maskedtextbox
+    *ngIf="field.DisplayType == DisplayType.TextBox && field.Masking != null"
+    class="form-control dynamicui-maskingtextbox dynamicui-font"
+    [title]="field.Label | htmltextcontent"
+    [id]="field.Name"
+    [formControlName]="field.Name"
+    [mask]="field.Masking"
+  >
+    <!-- field.pattern -->
+  </kendo-maskedtextbox>
+  <label
+    class="form-control-label dynamicui-label"
+    [attr.for]="field.value | htmldecoder"
+    *ngIf="field.DisplayType == DisplayType.Label"
+    [innerHtml]="field.value | htmldecoder"
+  >
+  </label>
+</div>

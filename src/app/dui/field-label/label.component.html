@@ -1,0 +1,29 @@
+<label
+  class="form-control-label dynamicui-label"
+  *ngIf="field.Type != FieldType.Message"
+  [attr.for]="field.Label"
+  [innerHtml]="field.Label | htmldecoder"
+>
+</label>
+<!-- moved label to inner html to support html markup in label text -->
+<strong
+  class="text-danger"
+  *ngIf="field.Type != FieldType.Message && field.Required == true"
+  >*</strong
+>
+<message
+  *ngIf="field.Type == FieldType.Message"
+  [field]="field"
+  [form]="form"
+></message>
+
+<i
+  class="fa fa-info-circle ml-2"
+  *ngIf="
+    (field.AdditionalInstructions && !field.Metadata) ||
+    (field.AdditionalInstructions &&
+      field.Metadata &&
+      field.Metadata.ShowAdditionalInstructions)
+  "
+  title="{{ field.AdditionalInstructions }}"
+></i>

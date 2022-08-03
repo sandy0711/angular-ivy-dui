@@ -1,0 +1,406 @@
+<ng-container *ngFor="let childElement of childElements">
+  <ng-container *ngIf="childElement.name == 'u'">
+    <u>
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </u>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'b'">
+    <b [ngClass]="getChildElementClassName(childElement)">
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </b>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'div'">
+    <ng-container *ngIf="childElement.children.length > 0">
+      <field-generator
+        [field]="childElement.field"
+        [element]="childElement"
+        [form]="form"
+        [attr.size]="getChildElementSize(childElement)"
+        [attr.id]="getChildElementId(childElement)"
+        [ngClass]="getChildElementClassName(childElement)"
+        [ngStyle]="getChildElementStyle(childElement)"
+      >
+      </field-generator>
+    </ng-container>
+    <ng-container *ngIf="childElement.children.length == 0">
+      <div
+        [attr.size]="getChildElementSize(childElement)"
+        [attr.id]="getChildElementId(childElement)"
+        [ngClass]="getChildElementClassName(childElement)"
+        [ngStyle]="getChildElementStyle(childElement)"
+      ></div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="childElement.type == 'text'">
+    {{ childElement.value }}
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h1'">
+    <h1
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h1>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h2'">
+    <h2
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h2>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h3'">
+    <h3
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h3>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h4'">
+    <h4
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h4>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h5'">
+    <h5
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h5>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'h6'">
+    <h6
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </h6>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'custom-field-builder'">
+    <custom-field-builder
+      [field]="childElement.field"
+      [form]="form"
+    ></custom-field-builder>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'field-builder'">
+    <field-builder [field]="childElement.field" [form]="form"></field-builder>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'fieldset'">
+    <ng-container *ngIf="childElement.children.length > 0">
+      <field-generator
+        [field]="childElement.field"
+        [element]="childElement"
+        [form]="form"
+        [ngClass]="getChildElementClassName(childElement)"
+        [ngStyle]="getChildElementStyle(childElement)"
+      >
+      </field-generator>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'field-label'">
+    <field-label [field]="childElement.field" [form]="form"></field-label>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'button'">
+    <button
+      [attr.id]="getChildElementId(childElement)"
+      [ngClass]="getChildElementClassName(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'img'">
+    <img
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.src]="getChildElementImgSrc(childElement)"
+    />
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'span'">
+    <span
+      [ngClass]="getChildElementClassName(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </span>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'input'">
+    <input
+      [attr.id]="getChildElementId(childElement)"
+      [attr.type]="getChildElementType(childElement)"
+      [attr.name]="getChildElementName(childElement)"
+      [attr.value]="getChildElementValue(childElement)"
+    />
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'br'">
+    <br />
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'label'">
+    <label
+      [attr.for]="getChildElementFor(childElement)"
+      [attr.id]="getChildElementId(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </label>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'select'">
+    <select
+      [attr.id]="getChildElementId(childElement)"
+      [attr.name]="getChildElementName(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    ></select>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'font'">
+    <font
+      [attr.id]="getChildElementId(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+      [attr.color]="getChildElementFontColor(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        >
+        </field-generator>
+      </ng-container>
+    </font>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'textarea'">
+    <textarea
+      [attr.id]="getChildElementId(childElement)"
+      [attr.oninput]="getChildElementOnInput(childElement)"
+    ></textarea>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'i'">
+    <i
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </i>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'table'">
+    <table
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'tbody'">
+    <tbody
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </tbody>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'thead'">
+    <thead
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </thead>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'tr'">
+    <tr
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </tr>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'td'">
+    <td
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </td>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'th'">
+    <th
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </th>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'a'">
+    <a
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [attr.href]="getChildElementHref(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'center'">
+    <center
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </center>
+  </ng-container>
+  <ng-container *ngIf="childElement.name == 'p'">
+    <p
+      [ngClass]="getChildElementClassName(childElement)"
+      [attr.title]="getChildElementTitle(childElement)"
+      [ngStyle]="getChildElementStyle(childElement)"
+    >
+      <ng-container *ngIf="childElement.children.length > 0">
+        <field-generator
+          [field]="childElement.field"
+          [element]="childElement"
+          [form]="form"
+        ></field-generator>
+      </ng-container>
+    </p>
+  </ng-container>
+</ng-container>

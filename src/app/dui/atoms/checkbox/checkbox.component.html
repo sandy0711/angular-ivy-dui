@@ -1,0 +1,27 @@
+<div [formGroup]="form">
+  <div
+    *ngIf="field.DisplayType != DisplayType.Label"
+    class="form-check form-check"
+  >
+    <label class="form-check-label">
+      <input
+        kendoCheckBox
+        [id]="field.Name"
+        [name]="field.Name"
+        [formControlName]="field.Name"
+        class="form-check-input"
+        type="checkbox"
+        id="field.Name"
+      />
+    </label>
+  </div>
+  <div *ngIf="field.DisplayType == DisplayType.Label">
+    <label
+      class="form-control-label dynamicui-label"
+      [attr.for]="field.value"
+      *ngIf="field.DisplayType == DisplayType.Label"
+      [innerHtml]="field.value | htmldecoder"
+    >
+    </label>
+  </div>
+</div>

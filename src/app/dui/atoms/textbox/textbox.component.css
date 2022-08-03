@@ -1,0 +1,24 @@
+.dynamicui-textbox {
+  min-width: 100%;
+  max-width: 100%;
+  text-indent: 0em;
+  height: auto;
+}
+/*  this css is added to remove extra starting space in starting of  masking textbox  */
+.dynamicui-textbox.k-textbox {
+  text-indent: 0em;
+  font-size: 14px;
+}
+
+.dynamicui-textbox.k-textbox.form-control {
+  height: auto;
+}
+/*  this css is added to remove extra starting space in starting of  masking textbox  */
+.dynamicui-maskingtextbox input.k-textbox {
+  text-indent: 0em;
+  font-size: 14px;
+}
+
+.dynamicui-font {
+  color: #484848;
+}

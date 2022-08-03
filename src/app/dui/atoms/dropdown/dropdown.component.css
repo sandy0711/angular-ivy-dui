@@ -1,0 +1,33 @@
+/*  this css is added to have  radio buttons side by side  */
+.dynamicui-radiobutton {
+  display: inline-block;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+.dynamicui-radiolabel {
+  font-weight: 400;
+}
+/*  this css is added to have a gap between label and button for radio button  */
+.dynamicui-radiobutton input.dynamicui-radioinput {
+  margin-right: 3px;
+}
+
+/*  this css is added to align text in center for dropdown  */
+/* .dynamicui-dropdown span.k-dropdown-wrap span.k-input {
+     align-items: baseline; 
+  } */
+
+.dynamicui-dropdown .k-dropdown-wrap {
+  text-indent: -9px;
+  font-size: 14px;
+  color: #484848;
+}
+
+.dynamicui-dropdown .k-dropdown-wrap:hover {
+  color: #484848;
+}
+
+.dynamicui-font {
+  color: #484848;
+}
