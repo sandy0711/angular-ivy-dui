@@ -1,0 +1,189 @@
+{
+  "fields": [
+    {
+      "Type": 1029,
+      "Name": "AssetClassScenarioId",
+      "Label": "",
+      "DisplayType": 1,
+      "Required": false,
+      "IsDisabled": false,
+      "MinLength": 1,
+      "MaxLength": 200,
+      "value": "",
+      "Id": "hdnAssetClassScenarioId"
+    },
+    {
+      "Type": 2,
+      "Name": "AssetClassId",
+      "Label": "Asset Class ID",
+      "OptionsDataSource": "AssetClassIdDS",
+      "IsPrimitive": true,
+      "DisplayType": 4,
+      "Required": true,
+      "Filterable": true,
+      "value": "",
+      "Id": "ddlAssetClassId"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "ScenarioId",
+      "Label": "Scenario ID",
+      "DisplayType": 4,
+      "OptionsDataSource": "ScenarioIdDS",
+      "IsPrimitive": true,
+      "DisplayType": 4,
+      "Required": true,
+      "Filterable": true,
+      "value": "",
+      "Id": "ddlAssetClassScenarioId"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "IndianReservation",
+      "Label": "Indian Reservation",
+      "DisplayType": 4,
+      "Required": true,
+      "IsPrimitive": true,
+      "Filterable": true,
+      "value": "",
+      "Options": [
+        { "Key": true, "Value": "True" },
+        { "Key": false, "Value": "False" }
+      ],
+      "Id": "ddlIndianReservation"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "ADSTaxExemptUseProperty",
+      "Label": "ADS Tax Exempt Use Property",
+      "DisplayType": 4,
+      "Required": true,
+      "IsPrimitive": true,
+      "Filterable": true,
+      "value": "",
+      "Options": [
+        { "Key": true, "Value": "True" },
+        { "Key": false, "Value": "False" }
+      ],
+      "Id": "ddlADSTaxExemptUseProperty"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "DepreciationCalcFactorsId",
+      "Label": "Depreciation Calculation Factors ID",
+      "DisplayType": 4,
+      "OptionsDataSource": "DepreciationDS",
+      "IsPrimitive": true,
+      "DisplayType": 4,
+      "Required": true,
+      "Filterable": true,
+      "value": "",
+      "Id": "ddlDepreciationCalcFactorsId"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "ADSCalcFactorsId",
+      "Label": "ADS Calcultion Factors ID",
+      "DisplayType": 4,
+      "OptionsDataSource": "DepreciationDS",
+      "IsPrimitive": true,
+      "DisplayType": 4,
+      "Required": true,
+      "Filterable": true,
+      "value": "",
+      "Id": "ddlADSCalcFactorsId"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "NoBonusCalcFactorsId",
+      "Label": "No Bonus Calculation Factors ID",
+      "DisplayType": 4,
+      "OptionsDataSource": "DepreciationDS",
+      "IsPrimitive": true,
+      "DisplayType": 4,
+      "Required": true,
+      "Filterable": true,
+      "value": "",
+      "Id": "ddlNoBonusCalcFactorsId"
+    },
+    {
+      "Type": 2,
+      "IsDisabled": false,
+      "Name": "IncludeExclude",
+      "Label": "Include",
+      "DisplayType": 4,
+      "Required": true,
+      "IsPrimitive": true,
+      "Filterable": true,
+      "value": "",
+      "Options": [
+        { "Key": true, "Value": "True" },
+        { "Key": false, "Value": "False" }
+      ],
+      "Id": "ddlIncludeExclude"
+    },
+    {
+      "Type": 20,
+      "Name": "Save",
+      "value": "Save",
+      "Id": "saveAssetClassScenarioBtn",
+      "events": {
+        "click": "/Function(function (field, $event) {\n fb_helper.service.processApi('VectorAPIBaseUrl','AssetsApi','UpdateAssetClassScenario','POST');\n })/"
+      },
+      "templateOptions": {
+        "ClassName": "k-button btn btn--primary eyAction-btn ml-0"
+      },
+      "ActionParams": {
+        "actionLink": "UpdateAssetClassScenario",
+        "messageOnFailure": "Unexpected error occured while saving Book, please contact support.",
+        "messageOnSuccess": "Asset Class Scenario updated sucessfully.",
+        "refreshGridOnFailure": false,
+        "refreshGridOnSuccess": true,
+        "closeFormOnSuccess": true,
+        "closeFormOnFailure": true
+      }
+    },
+    {
+      "Type": 20,
+      "Name": "Cancel",
+      "value": "Cancel",
+      "Id": "cancelAssetClassScenarioBtn",
+      "events": {
+        "click": "/Function(function (field, $event) {\n dui_helper.service.closeForm();\n })/"
+      },
+      "templateOptions": {
+        "ClassName": "k-button btn btn--secondary eyAction-btn ml-0"
+      }
+    }
+  ],
+  "DataSources": [
+    {
+      "Name": "AssetClassIdDS",
+      "Type": "dynamic",
+      "Options": "/Function(function(){ return fb_helper.service.getData('VectorAPIBaseUrl','assetsApi/GetAllAssetClasses','GET');})/",
+      "DataValueField": "AssetClassId",
+      "DataTextField": "AssetClassId"
+    },
+    {
+      "Name": "ScenarioIdDS",
+      "Type": "dynamic",
+      "Options": "/Function(function(){ return fb_helper.service.getData('VectorAPIBaseUrl','scenarioapi/GetScenarios','GET');})/",
+      "DataValueField": "ScenarioId",
+      "DataTextField": "ScenarioId"
+    },
+    {
+      "Name": "DepreciationDS",
+      "Type": "dynamic",
+      "Options": "/Function(function(){ return fb_helper.service.getData('VectorAPIBaseUrl','DepreciationApi/GetDepreciationCalcFactors','GET');})/",
+      "DataValueField": "DepreciationCalcFactorsId",
+      "DataTextField": "DepreciationCalcFactorsId"
+    }
+  ],
+  "model": "/Function(function(){ return fb_helper.service.getData('VectorAPIBaseUrl','AssetsApi/GetAssetClassScenarioById','POST');})/"
+}
